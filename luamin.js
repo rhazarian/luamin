@@ -175,6 +175,9 @@
 		if (lastCharA == '' || firstCharB == '') {
 			return a + b;
 		}
+		if (firstCharB == '(') {
+			return a + separator + b;	
+		}
 		if (regexAlphaUnderscore.test(lastCharA)) {
 			if (regexAlphaNumUnderscore.test(firstCharB)) {
 				// e.g. `while` + `1`
@@ -187,11 +190,7 @@
 			}
 		}
 		if (regexDigits.test(lastCharA)) {
-			if (
-				firstCharB == '(' ||
-				!(firstCharB == '.' ||
-				regexAlphaUnderscore.test(firstCharB))
-			) {
+			if (firstCharB != '.' && !regexAlphaUnderscore.test(firstCharB)) {
 				// e.g. `1` + `+`
 				// e.g. `1` + `==`
 				return a + b;
