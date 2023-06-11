@@ -176,6 +176,7 @@
 			return a + b;
 		}
 		if (firstCharB == '(') {
+			// e.g. `local a = b0` + `(function()print("hello world")end)()`
 			return a + separator + b;	
 		}
 		if (regexAlphaUnderscore.test(lastCharA)) {
